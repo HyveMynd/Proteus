@@ -6,9 +6,10 @@
   "scripts": {
     "build": "npm run build:node && npm run build:prod && npm run build:dev",
     "build:node": "babel ./src -d ./lib/src --source-maps",
-    "build:dev": "NODE_ENV=development webpack",
-    "build:prod": "NODE_ENV=production webpack -p",
-    "prepublish": "npm run build"
+    "build:dev": "npm run build:node && NODE_ENV=development webpack",
+    "build:prod": "npm run build:node && NODE_ENV=production webpack -p",
+    "prepublish": "npm run build",
+    "test": "npm run build:dev && node ./test/test.js"
   },
   "author": "",
   "license": "ISC",
