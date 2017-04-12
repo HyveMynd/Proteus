@@ -66,13 +66,13 @@ api.users(1).addresses().fetch();
 api.path('my-id').to().my().resource().fetch();
 ```
 
-## Fetch API
+## API
+
+### Node-Fetch API
 
 The final call to the call chain in Hermes is `fetch`. The `fetch` call follows mostly (adapted for node and this project) the same api. Please see [node-fetch](https://github.com/bitinn/node-fetch) for more detail about features made possible by Node.js.
 
-# API
-
-## fetch([,options])
+#### fetch([,options])
 - [options](#options) for the HTTP(S) request
 - Returns: <code>Promise&lt;[Response](https://github.com/bitinn/node-fetch/blob/master/README.md#class-response)&gt;</code>
 
@@ -80,7 +80,7 @@ Perform an HTTP(S) fetch.
 
 url should be an absolute url, such as http://example.com/. A path-relative URL (/file/under/root) or protocol-relative URL (//can-be-http-or-https.com/) will result in a rejected promise.
 
-###Options
+##### Options
 
 The default values are shown after each option key.
 ```
@@ -102,6 +102,21 @@ The default values are shown after each option key.
 	query: null,        // map of key:value pairs for query parameters
 }
 ```
+
+##### Default Headers
+
+If no values are set, the following request headers will be sent automatically:
+
+Header            | Value
+----------------- | --------------------------------------------------------
+`Accept-Encoding` | `gzip,deflate` _(when `options.compress === true`)_
+`Accept`          | `*/*`
+`Connection`      | `close` _(when no `options.agent` is present)_
+`Content-Length`  | _(automatically calculated, if possible)_
+`User-Agent`      | `node-fetch/1.0 (+https://github.com/bitinn/node-fetch)`
+
+
+
 
 
 
