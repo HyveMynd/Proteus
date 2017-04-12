@@ -22,7 +22,7 @@ By leveraging `node-fetch`, the Hermes api will be very familiar to anyone who h
 const Hermes = require('Hermes');
 const api = new Hermes('https://jsonplaceholder.typicode.com');
 
-api.users(1).exec()
+api.users(1).fetch()
   .then(response => response.json())
   .then(json => console.log(json));
 
@@ -60,8 +60,8 @@ Hermes will read the object invocations and convert those into a REST endpoint t
 const api = new Hermes('https://localhost');
 
 // Makes a GET request to https://localhost/users/1/addresses
-api.users(1).addresses().exec();
+api.users(1).addresses().fetch();
 
 // Makes a GET request to https://localhost/path/to/my/resource
-api.path('to').my('resource').get();
+api.path('to').my('resource').fetch();
 ```
