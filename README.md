@@ -72,15 +72,73 @@ api.path('my-id').to().my().resource().fetch();
 
 The final call to the call chain in Hermes is `fetch`. The `fetch` call follows mostly (adapted for node and this project) the same api. Please see [node-fetch](https://github.com/bitinn/node-fetch) for more detail about features made possible by Node.js.
 
-#### fetch([,options])
-- [options](#options) for the HTTP(S) request
+### new Hermes(baseUrl)
+- `baseUrl` A string representing the base URL for the fetch request
+- Returns: <code>[Hermes](#hermes-instance)</code>  instance
+
+Create a new instance of Hermes.
+
+`baseUrl` should be an absolute url, such as `http://example.com/`. A path-relative URL (`/file/under/root`) or protocol-relative URL (`//can-be-http-or-https.com/`) will result in a rejected promise.
+
+<a id="hermes-instance"></a>
+### hermesInstance.key([param])
+- `key` The name provided will resolve into a url path.
+- `param` The value of `param` will resolve into the next part of the url path following the `key`
+- Returns: <code>[Hermes](#hermes-instance)</code>
+
+Builds the URL to fetch. Chainable to build more complex URLs.
+
+Examples:
+```
+const hermesInstance = new Hermes('http://localhost');
+
+hermesInstance.users();
+// http://localhost/users
+
+hermesInstance.users(1).addresses();
+// http://localhost/users/1/addresses
+
+hermesInstance.buildings(502).floors(2).wings('west').rooms(213).desks(10).chairs('a');
+// http://localhost/buildings/502/floors/2/wings/west/rooms/213/desks/10/chairs/a
+```
+
+### fetch([options])
+- [`options`](#options) for the HTTP(S) request
 - Returns: <code>Promise&lt;[Response](https://github.com/bitinn/node-fetch/blob/master/README.md#class-response)&gt;</code>
 
 Perform an HTTP(S) fetch.
 
-url should be an absolute url, such as http://example.com/. A path-relative URL (/file/under/root) or protocol-relative URL (//can-be-http-or-https.com/) will result in a rejected promise.
+### get([options])
+- [`options`](#options) for the HTTP(S) request
+- Returns: <code>Promise&lt;[Response](https://github.com/bitinn/node-fetch/blob/master/README.md#class-response)&gt;</code>
 
-##### Options
+Perform an HTTP(S) fetch using the `GET` verb.
+
+### post([options])
+- [`options`](#options) for the HTTP(S) request
+- Returns: <code>Promise&lt;[Response](https://github.com/bitinn/node-fetch/blob/master/README.md#class-response)&gt;</code>
+
+Perform an HTTP(S) fetch using the `POST` verb.
+
+### put([options])
+- [`options`](#options) for the HTTP(S) request
+- Returns: <code>Promise&lt;[Response](https://github.com/bitinn/node-fetch/blob/master/README.md#class-response)&gt;</code>
+
+Perform an HTTP(S) fetch using the `PUT` verb.
+
+### patch([options])
+- [`options`](#options) for the HTTP(S) request
+- Returns: <code>Promise&lt;[Response](https://github.com/bitinn/node-fetch/blob/master/README.md#class-response)&gt;</code>
+
+Perform an HTTP(S) fetch using the `PATCH` verb.
+
+### del([options])
+- [`options`](#options) for the HTTP(S) request
+- Returns: <code>Promise&lt;[Response](https://github.com/bitinn/node-fetch/blob/master/README.md#class-response)&gt;</code>
+
+Perform an HTTP(S) fetch using the `DELETE` verb.
+
+#### Options
 
 The default values are shown after each option key.
 ```
