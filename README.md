@@ -112,31 +112,31 @@ Perform an HTTP(S) fetch.
 - [`options`](#options) for the HTTP(S) request
 - Returns: <code>Promise&lt;[Response](https://github.com/bitinn/node-fetch/blob/master/README.md#class-response)&gt;</code>
 
-Perform an HTTP(S) fetch using the `GET` verb.
+Shorthand to perform an HTTP(S) fetch using the `GET` verb.
 
 ### post([options])
 - [`options`](#options) for the HTTP(S) request
 - Returns: <code>Promise&lt;[Response](https://github.com/bitinn/node-fetch/blob/master/README.md#class-response)&gt;</code>
 
-Perform an HTTP(S) fetch using the `POST` verb.
+Shorthand to perform an HTTP(S) fetch using the `POST` verb.
 
 ### put([options])
 - [`options`](#options) for the HTTP(S) request
 - Returns: <code>Promise&lt;[Response](https://github.com/bitinn/node-fetch/blob/master/README.md#class-response)&gt;</code>
 
-Perform an HTTP(S) fetch using the `PUT` verb.
+Shorthand to perform an HTTP(S) fetch using the `PUT` verb.
 
 ### patch([options])
 - [`options`](#options) for the HTTP(S) request
 - Returns: <code>Promise&lt;[Response](https://github.com/bitinn/node-fetch/blob/master/README.md#class-response)&gt;</code>
 
-Perform an HTTP(S) fetch using the `PATCH` verb.
+Shorthand to perform an HTTP(S) fetch using the `PATCH` verb.
 
 ### del([options])
 - [`options`](#options) for the HTTP(S) request
 - Returns: <code>Promise&lt;[Response](https://github.com/bitinn/node-fetch/blob/master/README.md#class-response)&gt;</code>
 
-Perform an HTTP(S) fetch using the `DELETE` verb.
+Shorthand to perform an HTTP(S) fetch using the `DELETE` verb.
 
 #### Options
 
