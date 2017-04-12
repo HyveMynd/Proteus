@@ -58,11 +58,10 @@ Hermes will read the object invocations and convert those into a REST endpoint t
 
 ```
 const api = new Hermes('https://localhost');
-api.users(1).addresses().exec();
 
 // Makes a GET request to https://localhost/users/1/addresses
-
-api.path('to').my('resource').get();
+api.users(1).addresses().exec();
 
 // Makes a GET request to https://localhost/path/to/my/resource
+api.path('to').my('resource').get();
 ```
