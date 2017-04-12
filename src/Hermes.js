@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 class Hermes {
   constructor(baseUrl) {
@@ -8,19 +8,15 @@ class Hermes {
     if (!baseUrl.startsWith('http')) {
       base = `http://${baseUrl}`;
     }
-    // else if (!baseUrl.startsWith('https')) {
-    //   base = baseUrl.replace('http', 'https');
-    // }
 
     this.baseUrl = base;
   }
 
   addResource(resource, param) {
-    console.log('Adding', resource, param) // todo remove
     if (!this.endpoint) {
       this.endpoint = `${resource}`;
     } else {
-      this.endpoint += `/${resource}`
+      this.endpoint += `/${resource}`;
     }
 
     if (param) {
@@ -28,24 +24,15 @@ class Hermes {
     }
   }
 
-  makeHttpCall(options, method) {
-    if (!options) {
-      options = {};
-    }
-    options.method = method;
-
-    const url = `${this.baseUrl}/${this.endpoint}`;
-    this.endpoint = null;
-    console.log(url) // todo remove
-    return fetch(url, options)
-      .catch(err => { throw err });
-  };
+  exec(options) {
+    return this.makeHttpCall(options);
+  }
 
   get(options) {
     return this.makeHttpCall(options, 'GET');
   }
   post(options) {
-    this.makeHttpCall(options, 'POST');
+    return this.makeHttpCall(options, 'POST');
   }
   put(options) {
     return this.makeHttpCall(options, 'PUT');
@@ -56,31 +43,43 @@ class Hermes {
   del(options) {
     return this.makeHttpCall(options, 'DELETE');
   }
+
+  async makeHttpCall(options, method) {
+    let opts = options;
+    if (!options) {
+      opts = {};
+    }
+    opts.method = method;
+
+    const url = `${this.baseUrl}/${this.endpoint}`;
+    this.endpoint = null;
+
+    return fetch(url, options);
+  }
 }
 
-module.exports = (baseUrl) => {
+export default (baseUrl) => {
   const hermes = new Hermes(baseUrl);
 
   const proxyHandler = {
-    get: function (target, key, proxy) {
-
+    get(target, key, proxy) {
       // Handle defined props
       if (target[key] !== undefined) {
-        return target[key]
+        return target[key];
       } else if (hermes[key] !== undefined) {
-        return hermes[key]
+        return hermes[key];
       } else if (typeof key === 'symbol') {
         return Object.getOwnPropertySymbols(target)[key];
       }
 
       // Handle all others
       return (...args) => {
-        const [ param ] = args;
+        const [param] = args;
         hermes.addResource(key, param);
         return proxy;
-      }
+      };
     },
   };
 
-  return new Proxy({}, proxyHandler)
+  return new Proxy({}, proxyHandler);
 };
