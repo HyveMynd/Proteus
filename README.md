@@ -83,7 +83,7 @@ url should be an absolute url, such as http://example.com/. A path-relative URL 
 ###Options
 
 The default values are shown after each option key.
-
+```
 {
 	// These properties are part of the Fetch Standard
 	method: 'GET',
@@ -101,6 +101,7 @@ The default values are shown after each option key.
 	// These properties are Hermes extenstions
 	query: null,        // map of key:value pairs for query parameters
 }
+```
 
 
 
