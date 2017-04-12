@@ -24,7 +24,7 @@ class Hermes {
     }
   }
 
-  exec(options) {
+  fetch(options) {
     return this.makeHttpCall(options);
   }
 
