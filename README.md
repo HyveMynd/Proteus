@@ -5,7 +5,7 @@ Ultra flexible api client. Never write a REST Client again!
 ## Overview
 Hermes is the REST client to end all rest clients. It allows an app developer to idiomatically make REST calls 
 without all the boilerplate. Leveraging [node-fetch](https://github.com/bitinn/node-fetch) which relies on the wonderful
-[fetch](https://github.com/github/fetch) polyfill, Hermes is easy-to-use and a delightful experience. 
+[fetch](https://github.com/github/fetch) polyfill, Hermes is easy-to-use and allows you, the developer, to focus on more important problems.
 
 ## Installation
 
