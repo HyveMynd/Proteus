@@ -51,14 +51,16 @@ class Proteus {
     }
     opts.method = method;
 
-    if (options.query) {
-      const queryString = options.query.reduce
+    let queryString = '';
+    if (opts.query) {
+      queryString = Object.keys(opts.query).reduce((acc, curr) =>
+        `${acc}&${curr}=${opts.query[curr]}`, '?');
     }
 
-    const url = `${this.baseUrl}/${this.endpoint}`;
+    const url = `${this.baseUrl}/${this.endpoint}${queryString}`;
     this.endpoint = null;
 
-    return fetch(url, options);
+    return fetch(url, opts);
   }
 }
 

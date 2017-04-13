@@ -7,3 +7,4 @@ src
 node_modules
 .idea
 test
+karma.conf.js

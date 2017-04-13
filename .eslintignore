@@ -4,3 +4,4 @@ node_modules/
 webpack.config.js
 lib
 test
+karma.conf.js
