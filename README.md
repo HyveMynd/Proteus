@@ -70,7 +70,7 @@ api.path('my-id').to().my().resource().fetch();
 
 ### Node-Fetch API
 
-The final call to the call chain in Hermes is `fetch`. The `fetch` call follows mostly (adapted for node and this project) the same api. Please see [node-fetch](https://github.com/bitinn/node-fetch) for more detail about features made possible by Node.js.
+The final call to the call chain in Hermes is `fetch`. The `fetch` call follows mostly (adapted for node and this project) the same api as the `fetch` polyfill. Please see [node-fetch](https://github.com/bitinn/node-fetch) for more detail about features made possible by Node.js.
 
 ### new Hermes(baseUrl)
 - `baseUrl` A string representing the base URL for the fetch request
