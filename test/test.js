@@ -106,17 +106,3 @@ describe('Proteus', () => {
     });
   })
 });
-
-
-
-
-
-// asd.noexist().fetch()
-//   .catch(e => {
-//     console.log('NOOOOOOOOES!') // todo remove
-//   });
-//
-// let qwe = new Proteus('localhost:3000');
-// qwe.rifle().shotguns().fetch()
-//   .then(response => console.log(response))
-// let asd = new Proteus('localhost:3001');
