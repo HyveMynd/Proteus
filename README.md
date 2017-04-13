@@ -9,10 +9,7 @@ without all the boilerplate. Leveraging [node-fetch](https://github.com/bitinn/n
 
 ## Installation
 
-`npm i -S Proteus` (coming soon).
-
-Just install from git in your `package.json`
-
+`npm i -S proteus-client`
 
 ## Usage
 
