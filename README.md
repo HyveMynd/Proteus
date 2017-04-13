@@ -1,6 +1,9 @@
 # Proteus
 Ultra flexible api client. Never write a REST Client again!
 
+> In Greek mythology, Proteus is an early sea-god or god of rivers and oceanic bodies of water, 
+> ... of "versatile", "mutable", "capable of assuming many forms". "Protean" has positive connotations 
+> of flexibility, versatility and adaptability.
 
 ## Overview
 Proteus is the REST client to end all rest clients. It allows an app developer to idiomatically make REST calls
