@@ -156,7 +156,7 @@ The default values are shown after each option key.
 	size: 0,            // maximum response body size in bytes. 0 to disable
 	agent: null         // http(s).Agent instance, allows custom proxy, certificate etc.
 
-	// These properties are Proteus extenstions
+	// These properties are Proteus extensions
 	query: null,        // map of key:value pairs for query parameters
 }
 ```
