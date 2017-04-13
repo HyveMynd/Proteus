@@ -6,6 +6,4 @@ webpack.config.js
 src
 node_modules
 .idea
-seeds
-migrations
-.env
+test

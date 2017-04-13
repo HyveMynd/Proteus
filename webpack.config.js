@@ -4,12 +4,12 @@ const nodeExternals = require('webpack-node-externals');
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  entry: './Hermes.js',
+  entry: './Proteus.js',
   devtool: 'source-map',
   output: {
     path: path.join(__dirname, 'lib'),
-    filename: `Hermes${isProduction ? '.min' : ''}.js`,
-    library: 'Hermes',
+    filename: `Proteus${isProduction ? '.min' : ''}.js`,
+    library: 'Proteus',
     libraryTarget: 'umd',
   },
   target: 'node',

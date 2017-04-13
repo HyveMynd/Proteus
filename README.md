@@ -1,32 +1,32 @@
-# Hermes
+# Proteus
 Ultra flexible api client. Never write a REST Client again!
 
 
 ## Overview
-Hermes is the REST client to end all rest clients. It allows an app developer to idiomatically make REST calls 
+Proteus is the REST client to end all rest clients. It allows an app developer to idiomatically make REST calls
 without all the boilerplate. Leveraging [node-fetch](https://github.com/bitinn/node-fetch) which relies on the wonderful
-[fetch](https://github.com/github/fetch) polyfill, Hermes is easy-to-use and allows you, the developer, to focus on more important problems.
+[fetch](https://github.com/github/fetch) polyfill, Proteus is easy-to-use and allows you, the developer, to focus on more important problems.
 
 ## Installation
 
-`npm i -S Hermes` (coming soon).
+`npm i -S Proteus` (coming soon).
 
 Just install from git in your `package.json`
 
 
 ## Usage
 
-By leveraging `node-fetch`, the Hermes api will be very familiar to anyone who has developed with `fetch` in the past.
+By leveraging `node-fetch`, the Proteus api will be very familiar to anyone who has developed with `fetch` in the past.
 
 ```
-const Hermes = require('Hermes');
-const api = new Hermes('https://jsonplaceholder.typicode.com');
+const Proteus = require('Proteus');
+const api = new Proteus('https://jsonplaceholder.typicode.com');
 
 api.users(1).fetch()
   .then(response => response.json())
   .then(json => console.log(json));
 
-// Outputs the following 
+// Outputs the following
 {
   "id": 1,
   "name": "Leanne Graham",
@@ -54,10 +54,10 @@ api.users(1).fetch()
 
 ## How it works
 
-Hermes will read the object invocations and convert those into a REST endpoint to call. The name of the function being called will translate to a single path on the url. In order to provide a url parameter, simply provide an argument to the function (NOTE: must be coercable into a string).
+Proteus will read the object invocations and convert those into a REST endpoint to call. The name of the function being called will translate to a single path on the url. In order to provide a url parameter, simply provide an argument to the function (NOTE: must be coercable into a string).
 
 ```
-const api = new Hermes('https://localhost');
+const api = new Proteus('https://localhost');
 
 // Makes a GET request to https://localhost/users/1/addresses
 api.users(1).addresses().fetch();
@@ -70,35 +70,35 @@ api.path('my-id').to().my().resource().fetch();
 
 ### Node-Fetch API
 
-The final call to the call chain in Hermes is `fetch`. The `fetch` call follows mostly (adapted for node and this project) the same api. Please see [node-fetch](https://github.com/bitinn/node-fetch) for more detail about features made possible by Node.js.
+The final call to the call chain in Proteus is `fetch`. The `fetch` call follows mostly (adapted for node and this project) the same api. Please see [node-fetch](https://github.com/bitinn/node-fetch) for more detail about features made possible by Node.js.
 
-### new Hermes(baseUrl)
+### new Proteus(baseUrl)
 - `baseUrl` A string representing the base URL for the fetch request
-- Returns: <code>[Hermes](#hermes-instance)</code>  instance
+- Returns: <code>[Proteus](#Proteus-instance)</code>  instance
 
-Create a new instance of Hermes.
+Create a new instance of Proteus.
 
 `baseUrl` should be an absolute url, such as `http://example.com/`. A path-relative URL (`/file/under/root`) or protocol-relative URL (`//can-be-http-or-https.com/`) will result in a rejected promise.
 
-<a id="hermes-instance"></a>
-### hermesInstance.key([param])
+<a id="Proteus-instance"></a>
+### proteusInstance.key([param])
 - `key` The name provided will resolve into a url path.
 - `param` The value of `param` will resolve into the next part of the url path following the `key`
-- Returns: <code>[Hermes](#hermes-instance)</code>
+- Returns: <code>[Proteus](#Proteus-instance)</code>
 
 Builds the URL to fetch. Chainable to build more complex URLs.
 
 Examples:
 ```
-const hermesInstance = new Hermes('http://localhost');
+const proteusInstance = new Proteus('http://localhost');
 
-hermesInstance.users();
+proteusInstance.users();
 // http://localhost/users
 
-hermesInstance.users(1).addresses();
+proteusInstance.users(1).addresses();
 // http://localhost/users/1/addresses
 
-hermesInstance.buildings(502).floors(2).wings('west').rooms(213).desks(10).chairs('a');
+proteusInstance.buildings(502).floors(2).wings('west').rooms(213).desks(10).chairs('a');
 // http://localhost/buildings/502/floors/2/wings/west/rooms/213/desks/10/chairs/a
 ```
 
@@ -155,8 +155,8 @@ The default values are shown after each option key.
 	compress: true,     // support gzip/deflate content encoding. false to disable
 	size: 0,            // maximum response body size in bytes. 0 to disable
 	agent: null         // http(s).Agent instance, allows custom proxy, certificate etc.
-	
-	// These properties are Hermes extenstions
+
+	// These properties are Proteus extenstions
 	query: null,        // map of key:value pairs for query parameters
 }
 ```

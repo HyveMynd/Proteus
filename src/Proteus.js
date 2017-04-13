@@ -1,10 +1,10 @@
 import fetch from 'node-fetch';
 
-class Hermes {
+class Proteus {
   constructor(baseUrl) {
     let base = baseUrl;
 
-    // Validate the use of https
+    // Validate the use of http
     if (!baseUrl.startsWith('http')) {
       base = `http://${baseUrl}`;
     }
@@ -51,6 +51,10 @@ class Hermes {
     }
     opts.method = method;
 
+    if (options.query) {
+      const queryString = options.query.reduce
+    }
+
     const url = `${this.baseUrl}/${this.endpoint}`;
     this.endpoint = null;
 
@@ -59,15 +63,15 @@ class Hermes {
 }
 
 export default (baseUrl) => {
-  const hermes = new Hermes(baseUrl);
+  const proteus = new Proteus(baseUrl);
 
   const proxyHandler = {
     get(target, key, proxy) {
       // Handle defined props
       if (target[key] !== undefined) {
         return target[key];
-      } else if (hermes[key] !== undefined) {
-        return hermes[key];
+      } else if (proteus[key] !== undefined) {
+        return proteus[key];
       } else if (typeof key === 'symbol') {
         return Object.getOwnPropertySymbols(target)[key];
       }
@@ -75,7 +79,7 @@ export default (baseUrl) => {
       // Handle all others
       return (...args) => {
         const [param] = args;
-        hermes.addResource(key, param);
+        proteus.addResource(key, param);
         return proxy;
       };
     },
