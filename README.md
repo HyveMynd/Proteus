@@ -16,7 +16,7 @@ without all the boilerplate. Leveraging [node-fetch](https://github.com/bitinn/n
 
 ## Usage
 
-By leveraging `node-fetch`, the Proteus api will be very familiar to anyone who has developed with `fetch` in the past.
+Create a Proteus client with a `baseUrl`. Then simply chain resource endpoints togehter to dynamically build your REST endpoint URL. Lastly, call `fetch` in order to execute the request. By leveraging `node-fetch`, the Proteus api will be very familiar to anyone who has developed with Github's `fetch` API.
 
 ```
 const Proteus = require('Proteus');
