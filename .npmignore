@@ -3,8 +3,7 @@
 .eslintignore
 webpack.config.js
 .gitignore
-src
 node_modules
 .idea
 test
-karma.conf.js
+src/
