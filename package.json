@@ -8,10 +8,11 @@
     "build:node": "babel ./src -d ./lib/src --source-maps",
     "build:dev": "npm run build:node && NODE_ENV=development webpack",
     "build:prod": "npm run build:node && NODE_ENV=production webpack -p",
-    "prepublish": "npm run build",
-    "test": "npm run build:dev && mocha ./test/test.js",
-    "preversion": "npm test",
-    "postversion": "git push && git push --tags && rm -rf lib"
+    "clean": "rm -rf lib",
+    "prepublish": "npm run clean && npm run build",
+    "test": "npm run build && mocha ./test/test.js",
+    "preversion": "npm run clean && npm test",
+    "postversion": "git push && git push --tags"
   },
   "author": "",
   "license": "ISC",
