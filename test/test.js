@@ -1,4 +1,4 @@
-const Proteus = require('../lib/Proteus');
+const Proteus = require('../Proteus');
 const { describe, it, beforeEach } = require('mocha');
 const chai = require('chai');
 const chaiAsPromised = require("chai-as-promised");
@@ -47,7 +47,6 @@ describe('Proteus', () => {
         api.posts().post(options)
           .then(res => res.json())
           .then(json => {
-            console.log(json) // todo remove
             json.should.have.property('userId', body.userId);
             json.should.have.property('title', body.title);
             json.should.have.property('body', body.body);
