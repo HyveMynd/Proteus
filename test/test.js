@@ -115,11 +115,19 @@ describe('Proteus', () => {
   });
 
   describe('Bugs', () => {
-    it('makes successful call with no resource', () => {
+    describe('makes successful call with no resource', () => {
       const api = new Proteus('https://jsonplaceholder.typicode.com/users');
-      return api.fetch()
-        .then(response => response.json())
-        .should.eventually.have.length(10)
+
+      it('makes first call', () => {
+        return api.fetch()
+          .then(response => response.json())
+          .should.eventually.have.length(10)
+      });
+      it('makes subsequent call', () => {
+        return api.fetch()
+          .then(response => response.json())
+          .should.eventually.have.length(10)
+      });
     });
     describe('can make subsequent calls on same client', () => {
       const api = new Proteus('https://jsonplaceholder.typicode.com');

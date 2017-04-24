@@ -15,7 +15,7 @@ class Proteus {
   }
 
   _addResource_ = (resource, param) => {
-    if (!this.endpoint || this.endpoint.length === 0) {
+    if (this.endpoint.length === 0) {
       this.endpoint = `${resource}`;
     } else {
       this.endpoint += `/${resource}`;
@@ -60,7 +60,7 @@ class Proteus {
     }
 
     const url = `${this.baseUrl}/${this.endpoint}${queryString}`;
-    this.endpoint = null;
+    this.endpoint = '';
 
     return fetch(url, opts);
   }
