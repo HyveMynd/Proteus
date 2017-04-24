@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 
 class Proteus {
+
   constructor(baseUrl) {
     let base = baseUrl;
 
@@ -13,7 +14,7 @@ class Proteus {
     this.baseUrl = base;
   }
 
-  _addResource_(resource, param) {
+  _addResource_ = (resource, param) => {
     if (!this.endpoint || this.endpoint.length === 0) {
       this.endpoint = `${resource}`;
     } else {
@@ -45,7 +46,7 @@ class Proteus {
     return this._makeHttpCall_(options, 'DELETE');
   }
 
-  async _makeHttpCall_(options, method) {
+  _makeHttpCall_ = (options, method) => {
     let opts = options;
     if (!options) {
       opts = {};
@@ -59,7 +60,7 @@ class Proteus {
     }
 
     const url = `${this.baseUrl}/${this.endpoint}${queryString}`;
-    this.endpoint = '';
+    this.endpoint = null;
 
     return fetch(url, opts);
   }

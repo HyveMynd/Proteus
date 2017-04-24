@@ -114,17 +114,27 @@ describe('Proteus', () => {
     });
   });
 
-  describe('Edge cases', () => {
-    const api = new Proteus('https://jsonplaceholder.typicode.com/users');
-    it('makes successful call with no resource', () =>
-      api.fetch()
+  describe('Bugs', () => {
+    it('makes successful call with no resource', () => {
+      const api = new Proteus('https://jsonplaceholder.typicode.com/users');
+      return api.fetch()
         .then(response => response.json())
         .should.eventually.have.length(10)
-    );
-    it('can make subsequent calls on same client', () =>
-      api.fetch()
-        .then(response => response.json())
-        .should.eventually.have.length(10)
-    );
+    });
+    describe('can make subsequent calls on same client', () => {
+      const api = new Proteus('https://jsonplaceholder.typicode.com');
+
+      it('makes first call', () => {
+        return api.users().get()
+          .then(res => res.json())
+          .should.eventually.have.length(10);
+      });
+      it('makes subsequent call on same client', () => {
+        return api.users().get()
+          .then(res => res.json())
+          .should.eventually.have.length(10);
+      });
+
+    });
   });
 });
