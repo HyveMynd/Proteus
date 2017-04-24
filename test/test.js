@@ -52,6 +52,15 @@ describe('Proteus', () => {
             json.should.have.property('body', body.body);
           })
       );
+      it('can post again', () =>
+        api.posts().post(options)
+          .then(res => res.json())
+          .then(json => {
+            json.should.have.property('userId', body.userId);
+            json.should.have.property('title', body.title);
+            json.should.have.property('body', body.body);
+          })
+      );
     });
     describe('makes PUT requests', () => {
       const id = 1;
@@ -103,5 +112,19 @@ describe('Proteus', () => {
     describe('makes DELETE requests', () => {
       it('deleted the resource', () => api.posts(1).del())
     });
-  })
+  });
+
+  describe('Edge cases', () => {
+    const api = new Proteus('https://jsonplaceholder.typicode.com/users');
+    it('makes successful call with no resource', () =>
+      api.fetch()
+        .then(response => response.json())
+        .should.eventually.have.length(10)
+    );
+    it('can make subsequent calls on same client', () =>
+      api.fetch()
+        .then(response => response.json())
+        .should.eventually.have.length(10)
+    );
+  });
 });

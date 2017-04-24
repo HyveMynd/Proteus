@@ -9,11 +9,12 @@ class Proteus {
       base = `http://${baseUrl}`;
     }
 
+    this.endpoint = '';
     this.baseUrl = base;
   }
 
-  addResource(resource, param) {
-    if (!this.endpoint) {
+  _addResource_(resource, param) {
+    if (!this.endpoint || this.endpoint.length === 0) {
       this.endpoint = `${resource}`;
     } else {
       this.endpoint += `/${resource}`;
@@ -25,26 +26,26 @@ class Proteus {
   }
 
   fetch(options) {
-    return this.makeHttpCall(options);
+    return this._makeHttpCall_(options);
   }
 
   get(options) {
-    return this.makeHttpCall(options, 'GET');
+    return this._makeHttpCall_(options, 'GET');
   }
   post(options) {
-    return this.makeHttpCall(options, 'POST');
+    return this._makeHttpCall_(options, 'POST');
   }
   put(options) {
-    return this.makeHttpCall(options, 'PUT');
+    return this._makeHttpCall_(options, 'PUT');
   }
   patch(options) {
-    return this.makeHttpCall(options, 'PATCH');
+    return this._makeHttpCall_(options, 'PATCH');
   }
   del(options) {
-    return this.makeHttpCall(options, 'DELETE');
+    return this._makeHttpCall_(options, 'DELETE');
   }
 
-  async makeHttpCall(options, method) {
+  async _makeHttpCall_(options, method) {
     let opts = options;
     if (!options) {
       opts = {};
@@ -58,7 +59,7 @@ class Proteus {
     }
 
     const url = `${this.baseUrl}/${this.endpoint}${queryString}`;
-    this.endpoint = null;
+    this.endpoint = '';
 
     return fetch(url, opts);
   }
@@ -81,7 +82,7 @@ export default (baseUrl) => {
       // Handle all others
       return (...args) => {
         const [param] = args;
-        proteus.addResource(key, param);
+        proteus._addResource_(key, param);
         return proxy;
       };
     },
